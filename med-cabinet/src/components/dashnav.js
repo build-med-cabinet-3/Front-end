@@ -37,37 +37,37 @@ export default function DashNav() {
       <NavLink exact to="/">
         <DashNavItem>
           <i class="fas fa-home fa-3x"></i>
-          Home
+          <p>Home</p>
         </DashNavItem>
       </NavLink>
       <NavLink to="/mysymptoms">
         <DashNavItem>
           <i class="fas fa-notes-medical fa-3x"></i>
-          My Symptoms
+          <p>My Symptoms</p>
         </DashNavItem>
       </NavLink>
       <NavLink to="/recomendations">
         <DashNavItem>
           <i class="fas fa-prescription-bottle-alt fa-3x"></i>
-          My Recomendations
+          <p>My Recomendations</p>
         </DashNavItem>
       </NavLink>
       <NavLink to="/strains">
         <DashNavItem>
           <i class="fas fa-cannabis fa-3x"></i>
-          Browse Strains
+          <p>Browse Strains</p>
         </DashNavItem>
       </NavLink>
       <NavLink to="/dispensary">
         <DashNavItem>
           <i class="fas fa-clinic-medical fa-3x"></i>
-          Dispensary Locator
+          <p>Dispensary Locator</p>
         </DashNavItem>
       </NavLink>
       <NavLink to="/medfacts">
         <DashNavItem>
           <i class="fas fa-book-medical fa-3x"></i>
-          Cannabis Medical Facts
+          <p>Cannabis Medical Facts</p>
         </DashNavItem>
       </NavLink>
     </DashNavContainer>
