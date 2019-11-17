@@ -5,6 +5,7 @@ const WelcomeWrapper = styled.section`
   min-height: 100%;
   min-width: 80%;
   background-image: url("../../Logo.png");
+  opacity: 0.5;
   background-repeat: no-repeat;
   background-size: 100%;
 `;

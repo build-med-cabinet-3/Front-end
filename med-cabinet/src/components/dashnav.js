@@ -91,16 +91,6 @@ export default function DashNav() {
       <Route
         path="/strains"
         render={props => (
-          <SearchForm
-            {...props}
-            setStrainToSearch={setStrainToSearch}
-            strainToSearch={strainToSearch}
-          />
-        )}
-      />
-      <Route
-        path="/strains"
-        render={props => (
           <Strains
             {...props}
             strainToSearch={strainToSearch}

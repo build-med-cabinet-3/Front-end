@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
+const SearchFormContainer = styled.section``;
 export default function SearchForm(props) {
   const [searchCriteria, setSearchCriteria] = useState({ criteria: "" });
 
@@ -14,13 +16,13 @@ export default function SearchForm(props) {
   const handleSubmit = event => {
     event.preventDefault();
 
-    props.setNameToSearch(searchCriteria.criteria);
+    props.setStrainToSearch(searchCriteria.criteria);
 
     setSearchCriteria({ criteria: "" });
   };
 
   return (
-    <section className="search-form">
+    <SearchFormContainer>
       <form onSubmit={handleSubmit}>
         <label htmlFor="criteria"> Search </label>
         <input
@@ -32,7 +34,7 @@ export default function SearchForm(props) {
           type="text"
         />
         <button type="submit"> Submit </button>{" "}
-      </form>{" "}
-    </section>
+      </form>
+    </SearchFormContainer>
   );
 }
