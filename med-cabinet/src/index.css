@@ -9,6 +9,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    border: 1px solid black;
 }
 
 code {
