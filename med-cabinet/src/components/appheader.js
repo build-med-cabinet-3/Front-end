@@ -6,5 +6,11 @@ const HeaderContainer = styled.section`
   justify-content: flex-start;
 `;
 export default function AppHeader() {
-  return;
+  return (
+    <HeaderContainer>
+      <div className="LogoCont">
+        <img className="logo" src="../../Logo.png" width="42.6%"></img>
+      </div>
+    </HeaderContainer>
+  );
 }
