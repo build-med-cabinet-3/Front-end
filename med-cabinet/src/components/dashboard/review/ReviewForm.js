@@ -27,7 +27,7 @@ const ReviewForm = ({ values, errors, touched, status }) => {
         {touched.date && errors.date && (
           <p className="error-display"> {errors.date} </p>
         )}
-        <Field type="text" name="comments" placeholder="Enter Review Datails" />
+        <Field type="text" name="comments" placeholder="Enter Review Details" />
         {touched.comments && errors.comments && (
           <p className="error-display"> {errors.comments} </p>
         )}
@@ -51,6 +51,7 @@ export default withFormik({
       .required("Strain Name is required."),
     date: Yup.string()
       .min(8, "Date must be at least 8 characters.")
+      .max(10, "Date cannot be longer than 10 characters")
       .required("Date is required."),
     comments: Yup.string()
       .min(4, "Review comments must be at least 4 characters.")
