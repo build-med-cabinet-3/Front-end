@@ -12,8 +12,8 @@ const Login = ({ errors, touched, status }, props) => {
 
   return (
     <div className="login-container">
-      <Form className="Login-form" onSubmit={handleLoginSubmit}>
-        <label className="login-label">Email:</label>
+      <Form className="login-form" onSubmit={handleLoginSubmit}>
+        <label className="login-label"> Email: </label>
         <Field
           className="login-field"
           type="email"
@@ -21,9 +21,9 @@ const Login = ({ errors, touched, status }, props) => {
           placeholder="Email"
         />
         {touched.email && errors.email && (
-          <span className="error">{errors.email}</span>
+          <span className="error"> {errors.email} </span>
         )}
-        <label className="login-label">Password:</label>
+        <label className="login-label"> Password: </label>
         <Field
           className="login-field"
           type="password"
@@ -31,9 +31,9 @@ const Login = ({ errors, touched, status }, props) => {
           placeholder="Password"
         />
         {touched.password && errors.password && (
-          <span className="error">{errors.password}</span>
+          <span className="error"> {errors.password} </span>
         )}
-        <button> Login </button>
+        <button>Login</button>
       </Form>
     </div>
   );
