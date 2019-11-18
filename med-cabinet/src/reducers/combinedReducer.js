@@ -1,6 +1,15 @@
 import * as types from "../actions/actionTypes";
 
-export const combinedReducer = (state, action) => {
+const user = JSON.parse(localStorage.getItem("user"));
+
+export const initialState = {
+  first_name: user ? user.first_name : "",
+  lastName: user ? user.lastName : "",
+  email: user ? user.email : "",
+  password: ""
+};
+
+export const combinedReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_UP:
       return state;
@@ -40,50 +49,5 @@ export const combinedReducer = (state, action) => {
       return state;
   }
 };
-
-export const initialState = [
-  {
-    signupData: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: ""
-    }
-  },
-  {
-    loginData: {
-      email: "",
-      password: ""
-    }
-  },
-  // {
-  //   recFormData = [
-  //       {
-  //           questionOne: '',
-  //           questionTwo: '',
-  //           questionThree: '',
-  //           questionFour: '',
-  //           questionFive: '',
-  //       },
-  //   ]
-  // },
-  //   recListData = [],
-  {
-    reviewFormData: {
-      id: Date.now(),
-      strain: "",
-      family: "",
-      thcPotency: "",
-      cbdPotency: "",
-      dosage: "",
-      helpsWith: "",
-      description: "",
-      rating: ""
-    }
-  },
-  {
-    reviewList: []
-  }
-];
 
 export default [combinedReducer, initialState];
