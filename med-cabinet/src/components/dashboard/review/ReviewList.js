@@ -1,14 +1,16 @@
 import React from "react";
+import ReviewCard from "./ReviewCard";
 
 function ReviewList(review) {
   return (
     <div>
       {review.map((review, index) => (
-        <ul key={review.id}>
-          <li> Strain: {review.sName}</li>
-          <li> Review Date: {review.date} </li>
-          <li> Review Comments: {review.comments} </li>
-        </ul>
+        <ReviewCard
+          key={index}
+          sName={review.sName}
+          date={review.date}
+          comments={review.Comments}
+        />
       ))}
     </div>
   );

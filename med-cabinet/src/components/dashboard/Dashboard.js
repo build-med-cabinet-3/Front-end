@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import WelcomePage from "./welcomepage";
-import ReviewForm from "./ReviewForm";
-import ReviewList from "./ReviewList";
+import WelcomePage from "../WelcomePage";
+import ReviewForm from "./review/ReviewForm";
+import ReviewList from "./review/ReviewList";
 
 const Container = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ export default function Dashboard() {
             <p>My Reviews</p>
           </DashNavItem>
         </NavLink>
-        <NavLink to="/ReviewList">
+        <NavLink to="/ReviewForm">
           <DashNavItem>
             <i class="fas fa-notes-medical fa-3x"></i>
             <p>Submit Review</p>
@@ -63,7 +63,7 @@ export default function Dashboard() {
       </DashNavContainer>
       <Route exact path="/" component={WelcomePage} />
       <Route path="/ReviewList" component={ReviewList} />
-      <Route path="/ReviewFormt" component={ReviewForm} />
+      <Route path="/ReviewForm" component={ReviewForm} />
       )} />
     </Container>
   );
