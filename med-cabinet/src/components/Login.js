@@ -1,14 +1,16 @@
 import React from "react";
 import { Form, Field, withFormik } from "formik";
-import useForm from "../hooks/useForm";
 import * as Yup from "yup";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionCreators from "../actions/actionCreators";
 
-const Login = ({ errors, touched, status }, props) => {
-  const { handleLoginSubmit, values } = useForm(LoginSubmit);
-
-  function LoginSubmit() {
-    props.history.push("/dashboard");
-  }
+const Login = ({ errors, touched, values, userLogin }) => {
+  const handleLoginSubmit = e => {
+    console.log("in handleLoginSubmit", values);
+    e.preventDefault();
+    userLogin(values);
+  };
 
   return (
     <div className="login-container">
@@ -32,14 +34,17 @@ const Login = ({ errors, touched, status }, props) => {
         />
         {touched.password && errors.password && (
           <span className="error"> {errors.password} </span>
-        )
+        )}
         <button>Login</button>
       </Form>
+      <NavLink className="form-link" to="/login">
+        Already have an account?
+      </NavLink>
     </div>
   );
 };
 
-const FormikLoginForm = withFormik({
+const FormikLogin = withFormik({
   mapPropsToValues({ email, password }) {
     return {
       email: email || "",
@@ -58,4 +63,4 @@ const FormikLoginForm = withFormik({
 })(Login);
 //!!! withFormik validation and Yup Error Messages //
 
-export default FormikLoginForm;
+export default connect(state => state, actionCreators)(FormikLogin);
