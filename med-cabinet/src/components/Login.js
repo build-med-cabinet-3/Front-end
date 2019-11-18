@@ -5,11 +5,12 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions/actionCreators";
 
-const Login = ({ errors, touched, values, userLogin }) => {
+const Login = ({ errors, touched, values, userLogin, history }) => {
   const handleLoginSubmit = e => {
     console.log("in handleLoginSubmit", values);
     e.preventDefault();
-    userLogin(values);
+    userLogin(values, history);
+    history.push("/dashboard");
   };
 
   return (

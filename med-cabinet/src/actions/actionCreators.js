@@ -6,7 +6,6 @@ export const userSignup = userData => dispatch => {
     .post("/user/register", userData)
     .then(({ data }) => {
       dispatch({ type: types.SIGN_UP });
-      //   history.push("/login");
       localStorage.setItem("token", data.token);
     })
     .catch(err => console.log(err));
@@ -18,7 +17,6 @@ export const userLogin = (loginData, history) => dispatch => {
     .then(({ data }) => {
       localStorage.setItem("token", data.token);
       dispatch({ type: types.LOGIN });
-      //   history.push("/dashboard");
       //   getUser().then(({ data }) => {
       //     localStorage.setItem(
       //       "user",
