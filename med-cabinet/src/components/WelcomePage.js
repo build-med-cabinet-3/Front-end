@@ -20,7 +20,7 @@ export default function WelcomePage() {
           path="/dashboard"
           render={props => <Dashboard {...props} />}
         />
-      </Switch>
+      </Switch>{" "}
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import WelcomePage from "../WelcomePage";
+import DashHome from "./DashHome";
 import ReviewForm from "./review/ReviewForm";
 import ReviewList from "./review/ReviewList";
 
@@ -61,7 +61,7 @@ export default function Dashboard() {
           </DashNavItem>
         </NavLink>
       </DashNavContainer>
-      <Route exact path="/" component={WelcomePage} />
+      <Route exact path="/" component={DashHome} />
       <Route path="/ReviewList" component={ReviewList} />
       <Route path="/ReviewForm" component={ReviewForm} />
       )} />
