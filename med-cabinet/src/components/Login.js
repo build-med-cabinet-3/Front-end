@@ -1,17 +1,9 @@
 import React from "react";
 
-import useForm from "../hooks/useForm";
-
-const Login = props => {
-  const { handleLoginSubmit, values } = useForm(loginSubmit);
-
-  function loginSubmit() {
-    props.history.push("/dashboard");
-  }
-
+const Login = () => {
   return (
     <div className="login-container">
-      <form onSubmit={handleLoginSubmit}>
+      <form>
         <button>Login</button>
       </form>
     </div>
