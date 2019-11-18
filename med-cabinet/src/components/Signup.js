@@ -2,15 +2,15 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionCreators from "../actions/actionCreators";
 
-import useForm from "../hooks/useForm";
-
-const Signup = ({ errors, touched, status }, props) => {
-  const { handleSignupSubmit, values } = useForm(signupSubmit);
-
-  function signupSubmit() {
-    props.history.push("/login");
-  }
+const Signup = ({ errors, touched, values, userSignup }) => {
+  const handleSignupSubmit = e => {
+    console.log("in handleSignupSubmit", values);
+    e.preventDefault();
+    userSignup(values);
+  };
 
   return (
     <div className="signup-container">
@@ -20,12 +20,12 @@ const Signup = ({ errors, touched, status }, props) => {
         <Field
           className="signup-field"
           type="text"
-          name="firstName"
+          name="first_name"
           placeholder="First Name"
         />
         <small>(Between 2-24 characters)</small>
-        {touched.firstName && errors.firstName && (
-          <span className="error">{errors.firstName}</span>
+        {touched.first_name && errors.first_name && (
+          <span className="error">{errors.first_name}</span>
         )}
         <label className="signup-label">Last Name:</label>
         <Field
@@ -72,10 +72,10 @@ const Signup = ({ errors, touched, status }, props) => {
 };
 
 // withFormik validation and Yup Error Messages //
-const FormikSignupForm = withFormik({
-  mapPropsToValues({ firstName, lastName, email, password }) {
+const FormikSignup = withFormik({
+  mapPropsToValues({ first_name, lastName, email, password }) {
     return {
-      firstName: firstName || "",
+      first_name: first_name || "",
       lastName: lastName || "",
       email: email || "",
       password: password || ""
@@ -83,7 +83,7 @@ const FormikSignupForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    firstName: Yup.string()
+    first_name: Yup.string()
       .min(2, "Need at least 2 characters")
       .max(24, "No more than 24 characters")
       .required("User Name is required"),
@@ -91,7 +91,7 @@ const FormikSignupForm = withFormik({
       .min(2, "Need at least 2 characters")
       .max(24, "No more than 24 characters")
       .required("User Name is required"),
-    phoneNumber: Yup.string(),
+    email: Yup.string().required("User Name is required"),
     password: Yup.string()
       .min(4, "Need at least 4 characters")
       .required("Password is required")
@@ -99,4 +99,4 @@ const FormikSignupForm = withFormik({
 })(Signup);
 //!!! withFormik validation and Yup Error Messages //
 
-export default FormikSignupForm;
+export default connect(state => state, actionCreators)(FormikSignup);

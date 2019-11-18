@@ -32,7 +32,7 @@ const Login = ({ errors, touched, status }, props) => {
         />
         {touched.password && errors.password && (
           <span className="error"> {errors.password} </span>
-        )}
+        )
         <button>Login</button>
       </Form>
     </div>
