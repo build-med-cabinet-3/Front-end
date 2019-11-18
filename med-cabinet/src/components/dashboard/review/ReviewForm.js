@@ -21,15 +21,15 @@ const ReviewForm = ({ values, errors, touched, status }) => {
       <Form>
         <Field type="text" name="sName" placeholder="Strain Name" />
         {touched.sName && errors.sName && (
-          <p className="error-display"> {errors.fname} </p>
+          <p className="error-display"> {errors.sName} </p>
         )}
         <Field type="text" name="date" placeholder="Date" />
         {touched.date && errors.date && (
-          <p className="error-display"> {errors.lname} </p>
+          <p className="error-display"> {errors.date} </p>
         )}
         <Field type="text" name="comments" placeholder="Enter Review Datails" />
         {touched.comments && errors.comments && (
-          <p className="error-display"> {errors.email} </p>
+          <p className="error-display"> {errors.comments} </p>
         )}
         <button> Submit Review </button>
       </Form>
