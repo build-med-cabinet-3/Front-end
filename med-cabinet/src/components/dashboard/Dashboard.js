@@ -44,19 +44,19 @@ export default function Dashboard() {
       <DashNavContainer>
         <NavLink exact to="/">
           <DashNavItem>
-            <i class="fas fa-home fa-3x"></i>
+            <i className="fas fa-home fa-3x"></i>
             <p>Home</p>
           </DashNavItem>
         </NavLink>
         <NavLink to="/ReviewList">
           <DashNavItem>
-            <i class="fas fa-notes-medical fa-3x"></i>
+            <i className="fas fa-notes-medical fa-3x"></i>
             <p>My Reviews</p>
           </DashNavItem>
         </NavLink>
         <NavLink to="/ReviewForm">
           <DashNavItem>
-            <i class="fas fa-notes-medical fa-3x"></i>
+            <i className="fas fa-notes-medical fa-3x"></i>
             <p>Submit Review</p>
           </DashNavItem>
         </NavLink>
@@ -64,7 +64,6 @@ export default function Dashboard() {
       <Route exact path="/" component={WelcomePage} />
       <Route path="/ReviewList" component={ReviewList} />
       <Route path="/ReviewForm" component={ReviewForm} />
-      )} />
     </Container>
   );
 }

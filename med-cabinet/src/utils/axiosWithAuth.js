@@ -10,6 +10,7 @@ export const axiosWithAuth = () => {
   return axios.create({
     baseURL: "https://bw-med-cabinet-2019.herokuapp.com/",
     headers: {
+      "Content-Type": "application/json",
       Authorization: token
     }
   });

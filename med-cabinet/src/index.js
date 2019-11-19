@@ -8,8 +8,10 @@ import { combinedReducer } from "./reducers/combinedReducer";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-let store = createStore(combinedReducer, applyMiddleware(thunk));
+const store = createStore(combinedReducer, applyMiddleware(thunk));
 
+console.log(store);
+console.log(Provider);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
