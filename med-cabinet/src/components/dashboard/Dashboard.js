@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { Route } from "react-router-dom";
-import WelcomePage from "../WelcomePage";
-import ReviewForm from "./review/ReviewForm";
+
 import ReviewList from "./review/ReviewList";
+import RecommendList from "./recommend/RecommendList";
 
 const Container = styled.div`
   display: flex;
@@ -42,28 +41,23 @@ export default function Dashboard() {
   return (
     <Container>
       <DashNavContainer>
-        <NavLink exact to="/">
-          <DashNavItem>
-            <i className="fas fa-home fa-3x"></i>
-            <p>Home</p>
-          </DashNavItem>
-        </NavLink>
-        <NavLink to="/ReviewList">
+        <NavLink to="/dashboard/reviews">
           <DashNavItem>
             <i className="fas fa-notes-medical fa-3x"></i>
-            <p>My Reviews</p>
+            <p>Strain Reviews</p>
           </DashNavItem>
         </NavLink>
-        <NavLink to="/ReviewForm">
+        <NavLink to="/dashboard/recommendations">
           <DashNavItem>
             <i className="fas fa-notes-medical fa-3x"></i>
-            <p>Submit Review</p>
+            <p>Strain Recommendations</p>
           </DashNavItem>
         </NavLink>
       </DashNavContainer>
-      <Route exact path="/" component={WelcomePage} />
-      <Route path="/ReviewList" component={ReviewList} />
-      <Route path="/ReviewForm" component={ReviewForm} />
+      <Switch>
+        <Route path="/dashboard/reviews" component={ReviewList} />
+        <Route path="/dashboard/recommendations" component={RecommendList} />
+      </Switch>
     </Container>
   );
 }

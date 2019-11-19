@@ -39,7 +39,7 @@ const Login = ({ errors, touched, values, userLogin, history }) => {
         <button>Login</button>
       </Form>
       <NavLink className="form-link" to="/signup">
-        Already have an account?
+        Dont have an account?
       </NavLink>
     </div>
   );
