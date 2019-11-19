@@ -15,11 +15,7 @@ export default function WelcomePage() {
         <Redirect exact from="/" to="/login" />
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/signup" render={props => <Signup {...props} />} />
-        <PrivateRoute
-          exact
-          path="/dashboard"
-          render={props => <Dashboard {...props} />}
-        />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

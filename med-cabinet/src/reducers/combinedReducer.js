@@ -6,7 +6,8 @@ export const initialState = {
   first_name: user ? user.first_name : "",
   lastName: user ? user.lastName : "",
   email: user ? user.email : "",
-  password: ""
+  password: "",
+  reviewList: []
 };
 
 export const combinedReducer = (state = initialState, action) => {
