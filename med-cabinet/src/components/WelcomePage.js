@@ -18,12 +18,12 @@ export default function WelcomePage() {
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/signup" render={props => <Signup {...props} />} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/dashboard/reviews" component={ReviewList} />
         <PrivateRoute
           exact
           path="/dashboard/recommendations"
           component={RecommendList}
         />
+        <PrivateRoute exact path="/dashboard/reviews" component={ReviewList} />
       </Switch>
     </div>
   );

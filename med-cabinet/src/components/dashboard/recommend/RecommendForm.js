@@ -1,11 +1,11 @@
-// import React from "react";
+import React from "react";
 
-// const recommendForm = () => {
-//   return (
-//     <div>
-//       <p>Its Working!</p>
-//     </div>
-//   );
-// };
+const recommendForm = () => {
+  return (
+    <div>
+      <p>Its Working!</p>
+    </div>
+  );
+};
 
-// export default recommendForm;
+export default recommendForm;

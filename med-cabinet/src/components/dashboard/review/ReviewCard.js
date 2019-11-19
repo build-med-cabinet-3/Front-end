@@ -17,6 +17,7 @@ const Span = styled.span`
 export default function CharacterCard(props) {
   return (
     <Card>
+      <h1>Its Working!!!</h1>
       <h2> {props.sName} </h2>
       <div>
         <p>

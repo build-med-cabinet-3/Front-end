@@ -1,12 +1,15 @@
-// import React from "react";
-// import RecommendForm from "./RecommendForm";
+import React from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../../../actions/actionCreators";
 
-// const recommendList = () => {
-//   return (
-//     <div>
-//       <RecommendForm />
-//     </div>
-//   );
-// };
+import RecommendForm from "./RecommendForm";
 
-// export default connect(state => state, actionCreators)(recommendList);
+const recommendList = () => {
+  return (
+    <div>
+      <RecommendForm />
+    </div>
+  );
+};
+
+export default connect(state => state, actionCreators)(recommendList);

@@ -10,7 +10,6 @@ const Login = ({ errors, touched, values, userLogin, history }) => {
     console.log("in handleLoginSubmit", values);
     e.preventDefault();
     userLogin(values, history);
-    history.push("/dashboard");
   };
 
   return (
