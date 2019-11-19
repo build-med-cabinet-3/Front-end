@@ -10,7 +10,6 @@ const Signup = ({ errors, touched, values, userSignup, history }) => {
     console.log("in handleSignupSubmit", values);
     e.preventDefault();
     userSignup(values, history);
-    history.push("/login");
   };
 
   return (

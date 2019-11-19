@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+import PrivateRoute from "../../utils/PrivateRoute";
 
 import ReviewList from "./review/ReviewList";
 import RecommendList from "./recommend/RecommendList";
@@ -55,8 +56,11 @@ export default function Dashboard() {
         </NavLink>
       </DashNavContainer>
       <Switch>
-        <Route path="/dashboard/reviews" component={ReviewList} />
-        <Route path="/dashboard/recommendations" component={RecommendList} />
+        <PrivateRoute path="/dashboard/reviews" component={ReviewList} />
+        <PrivateRoute
+          path="/dashboard/recommendations"
+          component={RecommendList}
+        />
       </Switch>
     </Container>
   );

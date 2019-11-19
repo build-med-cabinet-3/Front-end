@@ -4,14 +4,15 @@ import ReviewCard from "./ReviewCard";
 function ReviewList(review) {
   return (
     <div>
-      {review.map((review, index) => (
+      <ReviewCard />
+      {/* {review.map((review, index) => (
         <ReviewCard
           key={index}
           sName={review.sName}
           date={review.date}
           comments={review.Comments}
         />
-      ))}
+      ))} */}
     </div>
   );
 }
