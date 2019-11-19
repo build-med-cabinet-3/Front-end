@@ -19,26 +19,9 @@ export const userLogin = (loginData, history) => dispatch => {
       dispatch({ type: types.LOGIN });
       localStorage.setItem("token", data.token);
       history.push("/dashboard");
-      //   getUser().then(({ data }) => {
-      //     localStorage.setItem(
-      //       "user",
-      //       JSON.stringify({
-      //         firstName: data.firstName,
-      //         lastName: data.lastName
-      //       })
-      //     );
-
-      //     dispatch({ type: types.GET_USER, payload: data });
-      //   });
     })
     .catch(err => console.log(err));
 };
-
-// export const getUser = () => {
-//     return withAuth
-//       .axiosWithAuth()
-//       .get("https://build-week-4.herokuapp.com/api/user/single_user");
-//   };
 
 // export const logout = () => {
 //   localStorage.removeItem("token");

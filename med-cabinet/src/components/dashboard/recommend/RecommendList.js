@@ -6,7 +6,7 @@ import RecommendForm from "./RecommendForm";
 
 const recommendList = () => {
   return (
-    <div>
+    <div className="recommend-container">
       <RecommendForm />
     </div>
   );
