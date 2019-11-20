@@ -7,6 +7,7 @@ const registerApi = "https://bw-med-cabinet-2019.herokuapp.com/user/register/";
 const dsApi =
   "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=";
 
+// User Signup
 export const userSignup = (userData, history) => dispatch => {
   axiosWithAuth()
     .post(registerApi, userData)
@@ -17,7 +18,9 @@ export const userSignup = (userData, history) => dispatch => {
     })
     .catch(err => console.log(err));
 };
+//!! User Signup
 
+// User Login && Logout
 export const userLogin = (loginData, history) => dispatch => {
   axiosWithAuth()
     .post(loginApi, loginData)
@@ -33,6 +36,7 @@ export const logout = () => {
   localStorage.removeItem("token");
   return { type: types.LOGOUT };
 };
+// User Logout
 
 //posting form for recommendations
 export const postRecForm = (recData, history) => dispatch => {
@@ -43,7 +47,7 @@ export const postRecForm = (recData, history) => dispatch => {
 };
 //!! posting form for recommendations
 
-//get recommendations from DS API for recommendations page
+//get  && display recommendations from DS API for recommendations page
 export const displayRecList = recommended => {
   return { type: types.GET_RECOMMENDED, payload: recommended };
 };
@@ -92,7 +96,6 @@ export const startEditReview = reviewId => {
 };
 
 export const editReview = review => dispatch => {
-  console.log("called editReview", review);
   axiosWithAuth()
     .put(`${review.id}`, review)
     .then(({ data }) => {
