@@ -34,7 +34,7 @@ const RecommendForm = ({
         <label className="recommend-label"> Strain: </label>
         <Field
           action=""
-          method="post"
+          method="get"
           component="select"
           name="strain"
           placeholder="Strain"
