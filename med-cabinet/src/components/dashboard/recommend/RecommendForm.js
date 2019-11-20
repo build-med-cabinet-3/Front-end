@@ -21,12 +21,24 @@ const RecommendForm = ({
     <div className="form-container">
       <Form className="recommendation-form" onSubmit={handleSubmit}>
         <label className="recommend-label"> Text: </label>
-        <Field type="text" name="text" placeholder="text" />
+        <Field
+          action=""
+          method="post"
+          type="text"
+          name="text"
+          placeholder="text"
+        />
         {touched.text && errors.text && (
           <span className="error"> {errors.text} </span>
         )}
         <label className="recommend-label"> Strain: </label>
-        <Field component="select" name="strain" placeholder="Strain">
+        <Field
+          action=""
+          method="post"
+          component="select"
+          name="strain"
+          placeholder="Strain"
+        >
           <option>Please Select a Strain</option>
           <option value="Indica">Indica</option>
           <option value="Sativa">Sativa</option>
@@ -51,7 +63,7 @@ const FormikRecommendForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    strain: Yup.string(),
+    strain: Yup.string().oneOf(["Indica", "Sativa", "Hybrid", "Skunk"]),
     text: Yup.string()
   })
 })(RecommendForm);

@@ -56,18 +56,66 @@ export const getRecList = () => dispatch => {
 };
 //!! get recommendations from recommendations page
 
-//post recommendation to backend
-export const setRecList = recommended => {
+//post recommendation to backend and display in the ReviewList Component
+export const setReviewList = recommended => {
   return { type: types.SAVE_RECOMMENDED, payload: recommended };
 };
 
-export const addReview = review => dispatch => {
+export const saveRecommended = recommended => dispatch => {
   axiosWithAuth()
-    .post("", review)
+    .post("", recommended)
     .then(({ data }) => {
       // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
-      dispatch(setRecList(review));
+      dispatch(setReviewList(recommended));
     })
     .catch(err => console.log(err));
 };
 //!!post recommendation to backend
+
+//get ReviewList
+export const displayReviewList = review => {
+  return { type: types.GET_REVIEW, payload: review };
+};
+export const getReviewList = () => dispatch => {
+  axiosWithAuth()
+    .get("")
+    .then(({ data }) => {
+      dispatch(displayReviewList(data));
+    })
+    .catch(err => console.log(err));
+};
+//!! get ReviewList
+
+//edit recommended strain for personal review
+export const startEditReview = reviewId => {
+  return { type: types.START_EDIT_REVIEW, payload: reviewId };
+};
+
+export const editReview = review => dispatch => {
+  console.log("called editReview", review);
+  axiosWithAuth()
+    .put(`${review.id}`, review)
+    .then(({ data }) => {
+      dispatch({ type: types.EDIT_REVIEW, payload: review });
+      // stops editing and allows adding plants again
+      dispatch({ type: types.START_EDIT_REVIEW, payload: 0 });
+    })
+    .catch(err => console.log(err));
+};
+//!! edit recommended strain for personal review
+
+//Delete Review
+export const startDeleteReview = review => {
+  return { type: types.DELETE_REVIEW, payload: review };
+};
+
+export const deleteReview = id => dispatch => {
+  axiosWithAuth()
+    .delete(`${id}`)
+    .then(() => {
+      dispatch(startDeleteReview(id));
+    })
+    .catch(err => console.log(err));
+};
+
+//!!Delete Review

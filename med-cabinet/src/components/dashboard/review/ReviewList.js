@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../../../actions/actionCreators";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
-export const ReviewList = () => {
+export const ReviewList = ({ getReviewList }) => {
   // useEffect(() => {
   //   getReviewList();
   // }, []);
@@ -21,4 +23,6 @@ export const ReviewList = () => {
     </div>
   );
 };
-export default ReviewList;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, actionCreators)(ReviewList);
