@@ -1,24 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { withFormik, Form, Field } from "formik";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-const apiEndPoint = "";
-const ReviewForm = ({ values, errors, touched, status }) => {
-  const [review, setReview] = useState([
-    {
-      sName: "",
-      date: "",
-      comments: ""
-    }
-  ]);
+import styled from "styled-components";
+import * as actionCreators from "../../../actions/actionCreators";
 
-  useEffect(() => {
-    status && setReview(review => [...review, status]);
-  }, [status]);
+const ReviewForm = ({
+  errors,
+  touched,
+  values,
+  status,
+  getReviewList,
+  addReview,
+  editReview,
+  setValues,
+  resetForm,
+  reviewToEdit
+}) => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (reviewToEdit > 0) {
+      editReview(values);
+    } else {
+      addReview(values);
+    }
+    resetForm();
+  };
+
+  // useEffect(() => {
+  //   if (reviewToEdit > 0) {
+  //     setValues(reviewList.find(review => review.id === reviewToEdit));
+  //   }
+  // });
 
   return (
     <div className="review-form">
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Field type="text" name="sName" placeholder="Strain Name" />
         {touched.sName && errors.sName && (
           <p className="error-display"> {errors.sName} </p>
@@ -31,7 +48,7 @@ const ReviewForm = ({ values, errors, touched, status }) => {
         {touched.comments && errors.comments && (
           <p className="error-display"> {errors.comments} </p>
         )}
-        <button> Submit Review </button>
+        <button>Submit</button>
       </Form>
     </div>
   );
@@ -56,14 +73,5 @@ export default withFormik({
     comments: Yup.string()
       .min(4, "Review comments must be at least 4 characters.")
       .required("Review comments is required.")
-  }),
-  handleSubmit(values, { resetForm, setStatus }) {
-    axios
-      .post(apiEndPoint, values)
-      .then(response => {
-        setStatus(response.data);
-        resetForm();
-      })
-      .catch(err => console.log(err.response));
-  }
+  })
 })(ReviewForm);

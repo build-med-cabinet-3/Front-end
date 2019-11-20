@@ -14,19 +14,32 @@ const Span = styled.span`
   font-weight: bold;
 `;
 
-export default function CharacterCard(props) {
+const ReviewCard = ({ review, startEdit, deleteReview }) => {
+  const onEdit = e => {
+    e.preventDefault();
+    startEdit(review.id);
+  };
+  const onDelete = e => {
+    e.preventDefault();
+    deleteReview(review.id);
+  };
+
   return (
-    <Card>
-      <h1>Its Working!!!</h1>
-      <h2> {props.sName} </h2>
-      <div>
-        <p>
-          <Span> Review Date: </Span> {props.date}
-        </p>
-        <p>
-          <Span> Reveiw Comments: </Span> {props.comments}
-        </p>
-      </div>
-    </Card>
+    <h1>Its Working!!!</h1>
+    // <Card>
+    //
+    //   <h2> {review.sName} </h2>
+    //   <div>
+    //     <p>
+    //       <Span> Review Date: </Span> {review.date}
+    //     </p>
+    //     <p>
+    //       <Span> Reveiw Comments: </Span> {review.comments}
+    //     </p>
+    //     <button onClick={onEdit}>Edit</button>
+    //     <button onClick={onDelete}>Delete</button>
+    //   </div>
+    // </Card>
   );
-}
+};
+export default ReviewCard;

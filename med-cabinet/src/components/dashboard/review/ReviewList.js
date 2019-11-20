@@ -2,7 +2,10 @@ import React from "react";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
-function ReviewList(review) {
+export const ReviewList = () => {
+  // useEffect(() => {
+  //   getReviewList();
+  // }, []);
   return (
     <div className="review-list-container">
       <ReviewForm />
@@ -17,5 +20,5 @@ function ReviewList(review) {
       ))} */}
     </div>
   );
-}
+};
 export default ReviewList;
