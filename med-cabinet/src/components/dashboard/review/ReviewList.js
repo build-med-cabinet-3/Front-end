@@ -1,8 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../../../actions/actionCreators";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
-function ReviewList(review) {
+export const ReviewList = ({ getReviewList }) => {
+  // useEffect(() => {
+  //   getReviewList();
+  // }, []);
   return (
     <div className="review-list-container">
       <ReviewForm />
@@ -17,5 +22,7 @@ function ReviewList(review) {
       ))} */}
     </div>
   );
-}
-export default ReviewList;
+};
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, actionCreators)(ReviewList);

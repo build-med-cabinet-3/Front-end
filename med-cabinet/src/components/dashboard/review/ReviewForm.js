@@ -1,69 +1,172 @@
-import React, { useState, useEffect } from "react";
-import { withFormik, Form, Field } from "formik";
+import React from "react";
+import { connect } from "react-redux";
+import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-const apiEndPoint = "";
-const ReviewForm = ({ values, errors, touched, status }) => {
-  const [review, setReview] = useState([
-    {
-      sName: "",
-      date: "",
-      comments: ""
-    }
-  ]);
+import * as actionCreators from "../../../actions/actionCreators";
 
-  useEffect(() => {
-    status && setReview(review => [...review, status]);
-  }, [status]);
+const ReviewForm = ({
+  errors,
+  touched,
+  values,
+  status,
+  addReview,
+  editReview,
+  setValues,
+  resetForm,
+  reviewToEdit
+}) => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (reviewToEdit > 0) {
+      editReview(values);
+    } else {
+      addReview(values);
+    }
+    resetForm();
+  };
+
+  // useEffect(() => {
+  //   if (reviewToEdit > 0) {
+  //     setValues(reviewList.find(review => review.id === reviewToEdit));
+  //   }
+  // });
 
   return (
     <div className="review-form">
-      <Form>
-        <Field type="text" name="sName" placeholder="Strain Name" />
-        {touched.sName && errors.sName && (
-          <p className="error-display"> {errors.sName} </p>
+      <Form onSubmit={handleSubmit}>
+        <label className="review-label">Strain:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="strain"
+          placeholder="Strain"
+        />
+        {touched.strain && errors.strain && (
+          <span className="error">{errors.strain}</span>
         )}
-        <Field type="text" name="date" placeholder="Date" />
-        {touched.date && errors.date && (
-          <p className="error-display"> {errors.date} </p>
+        <label className="review-label">Family:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="family"
+          placeholder="Family"
+        />
+        {touched.family && errors.family && (
+          <span className="error">{errors.family}</span>
         )}
-        <Field type="text" name="comments" placeholder="Enter Review Details" />
-        {touched.comments && errors.comments && (
-          <p className="error-display"> {errors.comments} </p>
+        <label className="review-label">Potency:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="potency"
+          placeholder="Potency"
+        />
+        {touched.potency && errors.potency && (
+          <span className="error">{errors.potency}</span>
         )}
-        <button> Submit Review </button>
+        <label className="review-label">Feelings:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="feelings"
+          placeholder="Feelings"
+        />
+        {touched.feelings && errors.feelings && (
+          <span className="error">{errors.feelings}</span>
+        )}
+        <label className="review-label">Helps With:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="helpsWith"
+          placeholder="Helps With"
+        />
+        {touched.helpsWith && errors.helpsWith && (
+          <span className="error">{errors.helpsWith}</span>
+        )}
+        <label className="review-label">Negatives:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="negatives"
+          placeholder="Negatives"
+        />
+        {touched.negatives && errors.negatives && (
+          <span className="error">{errors.negatives}</span>
+        )}
+        <label className="review-label">THC Content:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="thcContent"
+          placeholder="THC Content"
+        />
+        {touched.thcContent && errors.thcContent && (
+          <span className="error">{errors.thcContent}</span>
+        )}
+        <label className="review-label">CBD Content:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="cbdContent"
+          placeholder="CBD Content"
+        />
+        {touched.cbdContent && errors.cbdContent && (
+          <span className="error">{errors.cbdContent}</span>
+        )}
+        <label className="review-label">Description:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="description"
+          placeholder="Description"
+        />
+        {touched.description && errors.description && (
+          <span className="error">{errors.description}</span>
+        )}
+        <button>Submit</button>
       </Form>
     </div>
   );
 };
 
-export default withFormik({
-  mapPropsToValues({ sName, date, comments }) {
+const FormikReviewForm = withFormik({
+  mapPropsToValues({
+    strain,
+    family,
+    potency,
+    feelings,
+    helpsWith,
+    negatives,
+    thcContent,
+    cbdContent,
+    description
+  }) {
     return {
-      sName: sName || "",
-      date: date || "",
-      comments: comments || ""
+      strain: strain || "",
+      family: family || "",
+      potency: potency || "",
+      feelings: feelings || "",
+      helpsWith: helpsWith || "",
+      negatives: negatives || "",
+      thcContent: thcContent || "",
+      cbdContent: cbdContent || "",
+      description: description || ""
     };
   },
   validationSchema: Yup.object().shape({
-    sName: Yup.string()
-      .min(2, "Strain Name must be at least 2 characters.")
-      .required("Strain Name is required."),
-    date: Yup.string()
-      .min(8, "Date must be at least 8 characters.")
-      .max(10, "Date cannot be longer than 10 characters")
-      .required("Date is required."),
-    comments: Yup.string()
-      .min(4, "Review comments must be at least 4 characters.")
-      .required("Review comments is required.")
-  }),
-  handleSubmit(values, { resetForm, setStatus }) {
-    axios
-      .post(apiEndPoint, values)
-      .then(response => {
-        setStatus(response.data);
-        resetForm();
-      })
-      .catch(err => console.log(err.response));
-  }
+    strain: Yup.string(),
+    family: Yup.string(),
+    potency: Yup.string(),
+    feelings: Yup.string(),
+    helpsWith: Yup.string(),
+    negatives: Yup.string(),
+    thcContent: Yup.string(),
+    cbdContent: Yup.string(),
+    description: Yup.string()
+  })
 })(ReviewForm);
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, actionCreators)(FormikReviewForm);

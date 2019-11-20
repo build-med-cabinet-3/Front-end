@@ -1,32 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import { connect } from "react-redux";
+import * as actionCreators from "../../../actions/actionCreators";
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 2px solid black;
-`;
+const ReviewCard = ({ review, startEdit, deleteReview }) => {
+  // const onEdit = e => {
+  //   e.preventDefault();
+  //   startEdit(review.id);
+  // };
+  // const onDelete = e => {
+  //   e.preventDefault();
+  //   deleteReview(review.id);
+  // };
 
-const Span = styled.span`
-  font-weight: bold;
-`;
-
-export default function CharacterCard(props) {
   return (
-    <Card>
-      <h1>Its Working!!!</h1>
-      <h2> {props.sName} </h2>
-      <div>
-        <p>
-          <Span> Review Date: </Span> {props.date}
-        </p>
-        <p>
-          <Span> Reveiw Comments: </Span> {props.comments}
-        </p>
-      </div>
-    </Card>
+    <h1>Its Working!!!</h1>
+    //     <button onClick={onEdit}>Edit</button>
+    //     <button onClick={onDelete}>Delete</button>
   );
-}
+};
+export default connect(state => state, actionCreators)(ReviewCard);

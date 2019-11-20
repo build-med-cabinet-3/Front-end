@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import React from "react";
+import { NavLink, Switch } from "react-router-dom";
 import styled from "styled-components";
 import PrivateRoute from "../../utils/PrivateRoute";
 

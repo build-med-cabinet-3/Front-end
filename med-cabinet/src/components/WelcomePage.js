@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import styled from "styled-components";
 
 import PrivateRoute from "../utils/PrivateRoute";
 
