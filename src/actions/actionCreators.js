@@ -5,7 +5,7 @@ const loginApi = "https://bw-med-cabinet-2019.herokuapp.com/user/login";
 const registerApi = "https://bw-med-cabinet-2019.herokuapp.com/user/register/";
 
 const dsApi =
-  "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=";
+  "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=";
 
 // User Signup
 export const userSignup = (userData, history) => dispatch => {
@@ -39,9 +39,13 @@ export const logout = () => {
 // User Logout
 
 //posting form for recommendations
-export const postRecForm = (recData, history) => dispatch => {
+export const postRecForm = recData => dispatch => {
+  console.log("inside postrecform", recData);
   axiosWithAuth()
-    .post(dsApi, recData)
+    .post(
+      "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=",
+      { body: recData }
+    )
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

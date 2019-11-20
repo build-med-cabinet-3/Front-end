@@ -1,24 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../actions/actionCreators";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
 export const ReviewList = ({ getReviewList }) => {
-  // useEffect(() => {
-  //   getReviewList();
-  // }, []);
+  useEffect(() => {
+    getReviewList();
+  }, [getReviewList]);
   return (
     <div className="review-list-container">
       <ReviewForm />
       <ReviewCard />
-      {/* {review.map((review, index) => (
-        <ReviewCard
-          key={index}
-          sName={review.sName}
-          date={review.date}
-          comments={review.Comments}
-        />
+      {/* {reviewList.map(review => (
+        <ReviewCard key={review.id} review={review} />
       ))} */}
     </div>
   );

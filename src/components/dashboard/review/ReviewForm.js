@@ -29,7 +29,7 @@ const ReviewForm = ({
   //   if (reviewToEdit > 0) {
   //     setValues(reviewList.find(review => review.id === reviewToEdit));
   //   }
-  // });
+  // }, [reviewToEdit]);
 
   return (
     <div className="review-form">
