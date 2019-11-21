@@ -5,9 +5,7 @@ import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
 export const ReviewList = ({ getReviewList, reviewList }) => {
-  useEffect(() => {
-    getReviewList();
-  }, [getReviewList]);
+  console.log(reviewList);
   return (
     <div className="review-list-container">
       <ReviewForm />
