@@ -2,11 +2,11 @@ import * as types from "./actionTypes";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import jwt_decode from "jwt-decode";
 
-const loginApi = "https://bw-med-cabinet-2019.herokuapp.com/user/login";
-const registerApi = "https://bw-med-cabinet-2019.herokuapp.com/user/register/";
+const loginApi = "https://bw-med-cabinet-three.herokuapp.com/user/login";
+const registerApi = "https://bw-med-cabinet-three.herokuapp.com/user/register/";
 
 const dsApi =
-  "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=";
+  "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=";
 
 // User Signup
 export const userSignup = (userData, history) => dispatch => {
@@ -49,10 +49,12 @@ export const postRecForm = recData => dispatch => {
   console.log("inside postrecform", stringObjRecData);
   axiosWithAuth()
     .post(
-      `https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=${stringObjRecData}`,
+      `https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=${stringObjRecData}`,
       { body: stringObjRecData }
     )
-    .then(res => console.log(res))
+    .then(({ data }) => {
+      dispatch(displayRecList(data));
+    })
     .catch(err => console.log(err));
 };
 //!! posting form for recommendations
@@ -62,14 +64,18 @@ export const displayRecList = recommended => {
   return { type: types.GET_RECOMMENDED, payload: recommended };
 };
 
-export const getRecList = () => dispatch => {
-  axiosWithAuth()
-    .get(dsApi)
-    .then(({ data }) => {
-      dispatch(displayRecList(data));
-    })
-    .catch(err => console.log(err));
-};
+// export const getRecList = recData => dispatch => {
+//   const stringObjRecData = JSON.stringify(recData);
+//   axiosWithAuth()
+//     .get(
+//       `https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=${stringObjRecData}`,
+//       { params: stringObjRecData }
+//     )
+//     .then(({ data }) => {
+//       dispatch(displayRecList(data));
+//     })
+//     .catch(err => console.log(err));
+// };
 //!! get recommendations from recommendations page
 
 //post recommendation to backend and display in the ReviewList Component
@@ -135,7 +141,7 @@ export const startDeleteReview = review => {
 
 export const deleteReview = id => dispatch => {
   axiosWithAuth()
-    .delete(`${id}`)
+    .delete(`/${id}`)
     .then(() => {
       dispatch(startDeleteReview(id));
     })

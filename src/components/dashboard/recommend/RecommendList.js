@@ -6,10 +6,6 @@ import RecommendForm from "./RecommendForm";
 import RecommendCard from "./RecommendCard";
 
 export const RecommendList = ({ getRecList, recommendList }) => {
-  useEffect(() => {
-    getRecList();
-  }, [getRecList]);
-
   if (!recommendList) {
     return <h1>Loading...</h1>;
   }
