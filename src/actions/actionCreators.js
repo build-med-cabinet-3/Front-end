@@ -79,28 +79,28 @@ export const displayRecList = recommended => {
 //!! get recommendations from recommendations page
 
 //post recommendation to backend and display in the ReviewList Component
-export const setReviewList = recommended => {
-  return { type: types.SAVE_RECOMMENDED, payload: recommended };
-};
-export const setUser = user => {
-  return {
-    type: types.SET_USER,
-    payload: user
-  };
-};
+// export const setReviewList = recommended => {
+//   return { type: types.SAVE_RECOMMENDED, payload: recommended };
+// };
+// export const setUser = user => {
+//   return {
+//     type: types.SET_USER,
+//     payload: user
+//   };
+// };
 
-export const saveRecommended = (recommended, decoded) => dispatch => {
-  const token = localStorage.getItem("token");
-  var decoded = jwt_decode(token);
-  axiosWithAuth()
-    .post("", recommended)
-    .then(({ data }) => {
-      // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
-      dispatch(setReviewList(recommended), setUser(decoded.id));
-      console.log(decoded);
-    })
-    .catch(err => console.log(err));
-};
+// export const saveRecommended = (recommended, decoded) => dispatch => {
+//   const token = localStorage.getItem("token");
+//   var decoded = jwt_decode(token);
+//   axiosWithAuth()
+//     .post("", recommended)
+//     .then(({ data }) => {
+//       // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
+//       dispatch(setReviewList(recommended), setUser(decoded.id));
+//       console.log(decoded);
+//     })
+//     .catch(err => console.log(err));
+// };
 //!!post recommendation to backend
 
 //get ReviewList
