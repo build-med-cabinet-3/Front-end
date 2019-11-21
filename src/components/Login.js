@@ -7,7 +7,6 @@ import * as actionCreators from "../actions/actionCreators";
 
 const Login = ({ errors, touched, values, userLogin, history }) => {
   const handleLoginSubmit = e => {
-    console.log("in handleLoginSubmit", values);
     e.preventDefault();
     userLogin(values, history);
   };

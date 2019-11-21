@@ -8,5 +8,4 @@ export const DELETE_REVIEW = "DELETE_REVIEW";
 export const POST_REC_FORM = "POST_REC_FORM";
 export const GET_RECOMMENDED = "GET_RECOMMENDED";
 export const SAVE_RECOMMENDED = "SAVE_RECOMMENDED";
-export const SET_USER = "SET_USER";
 export const LOGOUT = "LOGOUT";

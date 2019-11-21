@@ -25,7 +25,9 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
       <p>{recommended.flavor}</p>
       <p>{recommended.Description1}</p>
       <p>{recommended.medical_effect_plain}</p>
-      {/* <button onClick={onSave()}>Save Recommendation</button> */}
+      <button onClick={() => saveRecommended(recommended.strain_id)}>
+        Save Recommendation
+      </button>
     </div>
   );
 };

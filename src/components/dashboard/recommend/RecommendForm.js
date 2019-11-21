@@ -13,7 +13,6 @@ const RecommendForm = ({
   postRecForm
 }) => {
   const handleSubmit = e => {
-    console.log("this is in handleSubmit Recommendations Form", values);
     e.preventDefault();
     postRecForm(values, history);
   };
