@@ -28,6 +28,11 @@ export const combinedReducer = (state = initialState, action) => {
         ...state,
         reviewList: [action.payload, ...state.reviewList]
       };
+    case types.START_EDIT_REVIEW:
+      return {
+        ...state,
+        reviewToEdit: action.payload
+      };
     case types.EDIT_REVIEW:
       return {
         ...state,
@@ -42,12 +47,20 @@ export const combinedReducer = (state = initialState, action) => {
           review => review.id !== action.payload
         )
       };
-    // case types.POST_FORM_RECOMMENDATION:
-    // return
-    //   ...state;
-    // case types.GET_RECOMMENDATION:
-    // return
-    //   ...state;
+    case types.POST_REC_FORM:
+      return {
+        ...state
+      };
+    case types.GET_RECOMMENDED:
+      return {
+        ...state,
+        recommendList: action.payload
+      };
+    case types.SAVE_RECOMMENDED:
+      return {
+        ...state,
+        reviewList: [action.payload, ...state.reviewList]
+      };
     default:
       return state;
   }

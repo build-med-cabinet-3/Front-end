@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
@@ -13,6 +13,7 @@ const ReviewForm = ({
   editReview,
   setValues,
   resetForm,
+  reviewList,
   reviewToEdit
 }) => {
   const handleSubmit = e => {
@@ -25,11 +26,11 @@ const ReviewForm = ({
     resetForm();
   };
 
-  // useEffect(() => {
-  //   if (reviewToEdit > 0) {
-  //     setValues(reviewList.find(review => review.id === reviewToEdit));
-  //   }
-  // });
+  useEffect(() => {
+    if (reviewToEdit > 0) {
+      setValues(reviewList.find(review => review.id === reviewToEdit));
+    }
+  }, [reviewToEdit, reviewList, setValues]);
 
   return (
     <div className="review-form">
@@ -44,85 +45,95 @@ const ReviewForm = ({
         {touched.strain && errors.strain && (
           <span className="error">{errors.strain}</span>
         )}
-        <label className="review-label">Family:</label>
+        <label className="review-label">Type:</label>
         <Field
           className="review-field"
           type="text"
-          name="family"
-          placeholder="Family"
+          name="type"
+          placeholder="Type"
         />
-        {touched.family && errors.family && (
-          <span className="error">{errors.family}</span>
+        {touched.type && errors.type && (
+          <span className="error">{errors.type}</span>
         )}
-        <label className="review-label">Potency:</label>
+        <label className="review-label">Score:</label>
         <Field
           className="review-field"
           type="text"
-          name="potency"
-          placeholder="Potency"
+          name="score"
+          placeholder="Score"
         />
-        {touched.potency && errors.potency && (
-          <span className="error">{errors.potency}</span>
+        {touched.score && errors.score && (
+          <span className="error">{errors.score}</span>
         )}
-        <label className="review-label">Feelings:</label>
+        <label className="review-label">THC %:</label>
         <Field
           className="review-field"
           type="text"
-          name="feelings"
-          placeholder="Feelings"
+          name="THC_Percent"
+          placeholder="THC Percent"
         />
-        {touched.feelings && errors.feelings && (
-          <span className="error">{errors.feelings}</span>
+        {touched.THC_Percent && errors.THC_Percent && (
+          <span className="error">{errors.THC_Percent}</span>
         )}
-        <label className="review-label">Helps With:</label>
+        <label className="review-label">CBD %:</label>
         <Field
           className="review-field"
           type="text"
-          name="helpsWith"
-          placeholder="Helps With"
+          name="CBD"
+          placeholder="CBD Percent"
         />
-        {touched.helpsWith && errors.helpsWith && (
-          <span className="error">{errors.helpsWith}</span>
+        {touched.CBD && errors.CBD && (
+          <span className="error">{errors.CBD}</span>
         )}
-        <label className="review-label">Negatives:</label>
+        <label className="review-label">Medical Effects:</label>
         <Field
           className="review-field"
           type="text"
-          name="negatives"
-          placeholder="Negatives"
+          name="medical_effect_plain"
+          placeholder="Medical Effects"
         />
-        {touched.negatives && errors.negatives && (
-          <span className="error">{errors.negatives}</span>
+        {touched.medical_effect_plain && errors.medical_effect_plain && (
+          <span className="error">{errors.medical_effect_plain}</span>
         )}
-        <label className="review-label">THC Content:</label>
+        <label className="review-label">effect:</label>
         <Field
           className="review-field"
           type="text"
-          name="thcContent"
-          placeholder="THC Content"
+          name="effect"
+          placeholder="Effect"
         />
-        {touched.thcContent && errors.thcContent && (
-          <span className="error">{errors.thcContent}</span>
+        {touched.effect && errors.effect && (
+          <span className="error">{errors.effect}</span>
         )}
-        <label className="review-label">CBD Content:</label>
+        <label className="review-label">Flavor:</label>
         <Field
           className="review-field"
           type="text"
-          name="cbdContent"
-          placeholder="CBD Content"
+          name="flavor"
+          placeholder="flavor"
         />
-        {touched.cbdContent && errors.cbdContent && (
-          <span className="error">{errors.cbdContent}</span>
+        {touched.flavor && errors.flavor && (
+          <span className="error">{errors.flavor}</span>
+        )}
+        <label className="review-label">Recommendation:</label>
+        <Field
+          className="review-field"
+          type="text"
+          name="Recommendation"
+          placeholder="Recommendation"
+        />
+        {touched.Recommendation && errors.Recommendation && (
+          <span className="error">{errors.Recommendation}</span>
         )}
         <label className="review-label">Description:</label>
         <Field
           className="review-field"
           type="text"
-          name="description"
+          name="Description1"
           placeholder="Description"
         />
-        {touched.description && errors.description && (
-          <span className="error">{errors.description}</span>
+        {touched.Description1 && errors.Description1 && (
+          <span className="error">{errors.Description1}</span>
         )}
         <button>Submit</button>
       </Form>
