@@ -15,16 +15,16 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
   };
   return (
     <div className="recommended-card-container">
-      <p>{recommended.CBD}</p>
-      <p>{recommended.Description1}</p>
       <p>{recommended.Recommendation}</p>
+      <p>{recommended.strain}</p>
       <p>{recommended.Score}</p>
-      <p>{recommended.THC_Percent}</p>
       <p>{recommended.Type}</p>
+      <p>{recommended.THC_Percent}</p>
+      <p>{recommended.CBD}</p>
       <p>{recommended.effect}</p>
       <p>{recommended.flavor}</p>
+      <p>{recommended.Description1}</p>
       <p>{recommended.medical_effect_plain}</p>
-      <p>{recommended.strain}</p>
       <button onClick={onSave()}>Save Recommendation</button>
     </div>
   );
