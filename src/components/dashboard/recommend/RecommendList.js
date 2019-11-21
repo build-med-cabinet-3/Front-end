@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../actions/actionCreators";
 
 import RecommendForm from "./RecommendForm";
 import RecommendCard from "./RecommendCard";
 
-export const RecommendList = ({ getRecList }) => {
-  //   useEffect(() => {
-  //     getRecList();
-  //   }, []);
+export const RecommendList = ({ getRecList, recommendList }) => {
+  useEffect(() => {
+    getRecList();
+  }, [getRecList]);
+
+  if (!recommendList) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div className="recommend-container">
       <RecommendForm />
-      <RecommendCard />
+      {recommendList.map(recommended => (
+        <RecommendCard key={recommended.id} recommended={recommended} />
+      ))}
     </div>
   );
 };

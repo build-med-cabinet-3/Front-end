@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import jwt_decode from "jwt-decode";
 
 const loginApi = "https://bw-med-cabinet-2019.herokuapp.com/user/login";
 const registerApi = "https://bw-med-cabinet-2019.herokuapp.com/user/register/";
@@ -27,6 +28,9 @@ export const userLogin = (loginData, history) => dispatch => {
     .then(({ data }) => {
       dispatch({ type: types.LOGIN });
       localStorage.setItem("token", data.token);
+      const token = localStorage.getItem("token");
+      var decoded = jwt_decode(token);
+      console.log(decoded.id);
       history.push("/dashboard");
     })
     .catch(err => console.log(err));
@@ -39,12 +43,14 @@ export const logout = () => {
 // User Logout
 
 //posting form for recommendations
+
 export const postRecForm = recData => dispatch => {
-  console.log("inside postrecform", recData);
+  const stringObjRecData = JSON.stringify(recData);
+  console.log("inside postrecform", stringObjRecData);
   axiosWithAuth()
     .post(
-      "https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=",
-      { body: recData }
+      `https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/test/?search=${stringObjRecData}`,
+      { body: stringObjRecData }
     )
     .then(res => console.log(res))
     .catch(err => console.log(err));
@@ -59,7 +65,9 @@ export const displayRecList = recommended => {
 export const getRecList = () => dispatch => {
   axiosWithAuth()
     .get(dsApi)
-    .then(res => console.log(res))
+    .then(({ data }) => {
+      dispatch(displayRecList(data));
+    })
     .catch(err => console.log(err));
 };
 //!! get recommendations from recommendations page
@@ -68,13 +76,22 @@ export const getRecList = () => dispatch => {
 export const setReviewList = recommended => {
   return { type: types.SAVE_RECOMMENDED, payload: recommended };
 };
+export const setUser = user => {
+  return {
+    type: types.SET_USER,
+    payload: user
+  };
+};
 
-export const saveRecommended = recommended => dispatch => {
+export const saveRecommended = (recommended, decoded) => dispatch => {
+  const token = localStorage.getItem("token");
+  var decoded = jwt_decode(token);
   axiosWithAuth()
     .post("", recommended)
     .then(({ data }) => {
       // NEED AT LEAST ID OF NEW PLANT FROM BACKEND
-      dispatch(setReviewList(recommended));
+      dispatch(setReviewList(recommended), setUser(decoded.id));
+      console.log(decoded);
     })
     .catch(err => console.log(err));
 };

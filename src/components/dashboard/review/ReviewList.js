@@ -4,7 +4,7 @@ import * as actionCreators from "../../../actions/actionCreators";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
-export const ReviewList = ({ getReviewList }) => {
+export const ReviewList = ({ getReviewList, reviewList }) => {
   useEffect(() => {
     getReviewList();
   }, [getReviewList]);
@@ -12,9 +12,9 @@ export const ReviewList = ({ getReviewList }) => {
     <div className="review-list-container">
       <ReviewForm />
       <ReviewCard />
-      {/* {reviewList.map(review => (
+      {reviewList.map(review => (
         <ReviewCard key={review.id} review={review} />
-      ))} */}
+      ))}
     </div>
   );
 };

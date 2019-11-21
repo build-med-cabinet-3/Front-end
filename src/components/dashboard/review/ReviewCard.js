@@ -16,6 +16,16 @@ const ReviewCard = ({ review, startEdit, deleteReview }) => {
     <>
       <h1>Its Working!!!</h1>
       <div className="card-container">
+        <p>{review.CBD}</p>
+        <p>{review.Description1}</p>
+        <p>{review.Recommendation}</p>
+        <p>{review.Score}</p>
+        <p>{review.THC_Percent}</p>
+        <p>{review.Type}</p>
+        <p>{review.effect}</p>
+        <p>{review.flavor}</p>
+        <p>{review.medical_effect_plain}</p>
+        <p>{review.strain}</p>
         <button onClick={onEdit}>Edit</button>
         <button onClick={onDelete}>Delete</button>
       </div>

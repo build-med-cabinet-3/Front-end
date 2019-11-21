@@ -17,6 +17,7 @@ const RecommendForm = ({
     e.preventDefault();
     postRecForm(values, history);
   };
+
   return (
     <div className="form-container">
       <Form className="recommendation-form" onSubmit={handleSubmit}>
@@ -173,10 +174,13 @@ const RecommendForm = ({
 };
 
 const FormikRecommendForm = withFormik({
-  mapPropsToValues({ strain, text }) {
+  mapPropsToValues({ family, effects, terpenes, benefits, info }) {
     return {
-      strain: strain || "",
-      text: text || ""
+      family: family || "",
+      effects: effects || "",
+      terpenes: terpenes || "",
+      benefits: benefits || "",
+      info: info || ""
     };
   },
 
@@ -242,7 +246,8 @@ const FormikRecommendForm = withFormik({
       "Intestinal anti prokinetic (Reduces small intestine contractions)",
       "Neuroprotectant (Slows nervous system degeneration)",
       "Vasorelaxant (Reduces vascular tension)"
-    ])
+    ]),
+    info: Yup.string()
   })
 })(RecommendForm);
 
