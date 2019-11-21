@@ -44,13 +44,11 @@ export default function Dashboard() {
       <DashNavContainer>
         <NavLink to="/dashboard/reviews">
           <DashNavItem>
-            <i className="fas fa-notes-medical fa-3x"></i>
             <p>Strain Reviews</p>
           </DashNavItem>
         </NavLink>
         <NavLink to="/dashboard/recommendations">
           <DashNavItem>
-            <i className="fas fa-notes-medical fa-3x"></i>
             <p>Strain Recommendations</p>
           </DashNavItem>
         </NavLink>

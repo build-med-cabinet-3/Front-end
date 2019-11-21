@@ -3,20 +3,21 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../actions/actionCreators";
 
 const ReviewCard = ({ review, startEdit, deleteReview }) => {
-  // const onEdit = e => {
-  //   e.preventDefault();
-  //   startEdit(review.id);
-  // };
-  // const onDelete = e => {
-  //   e.preventDefault();
-  //   deleteReview(review.id);
-  // };
+  console.log("this is from reviewCard", review);
+  const onEdit = e => {
+    e.preventDefault();
+    startEdit(review.id);
+  };
+  const onDelete = e => {
+    e.preventDefault();
+    deleteReview(review.id);
+  };
 
   return (
     <>
       <h1>Its Working!!!</h1>
       <div className="card-container">
-        {/* <p>{review.CBD}</p>
+        <p>{review.CBD}</p>
         <p>{review.Description1}</p>
         <p>{review.Recommendation}</p>
         <p>{review.Score}</p>
@@ -27,9 +28,10 @@ const ReviewCard = ({ review, startEdit, deleteReview }) => {
         <p>{review.medical_effect_plain}</p>
         <p>{review.strain}</p>
         <button onClick={onEdit}>Edit</button>
-        <button onClick={onDelete}>Delete</button> */}
+        <button onClick={onDelete}>Delete</button>
       </div>
     </>
   );
 };
-export default connect(state => state, actionCreators)(ReviewCard);
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, actionCreators)(ReviewCard);

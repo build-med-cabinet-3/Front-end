@@ -10,12 +10,9 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
 
   const userRecommended = Object.assign(recommended, decoded);
   console.log(userRecommended);
-  // const onSave = e => {
-  //   saveRecommended(recommended.strain_id);
-  // };
+
   return (
     <div className="recommended-card-container">
-      <p>{recommended.Recommendation}</p>
       <p>{recommended.strain}</p>
       <p>{recommended.Score}</p>
       <p>{recommended.Type}</p>
@@ -25,7 +22,7 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
       <p>{recommended.flavor}</p>
       <p>{recommended.Description1}</p>
       <p>{recommended.medical_effect_plain}</p>
-      <button onClick={() => saveRecommended(recommended.strain_id)}>
+      <button onClick={() => saveRecommended(recommended)}>
         Save Recommendation
       </button>
     </div>

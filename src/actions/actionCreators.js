@@ -62,8 +62,9 @@ export const setReviewList = recommended => {
 };
 
 export const saveRecommended = recommended => dispatch => {
+  console.log("this is from action creators", recommended);
   axiosWithAuth()
-    .post("", recommended)
+    .post("https://bw-med-cabinet-three.herokuapp.com/saved", recommended)
     .then(({ data }) => {
       // NEED AT LEAST ID OF NEW REVIEW FROM BACKEND
       dispatch(setReviewList(recommended));
@@ -76,11 +77,11 @@ export const saveRecommended = recommended => dispatch => {
 export const displayReviewList = review => {
   return { type: types.GET_REVIEW, payload: review };
 };
-export const getReviewList = () => dispatch => {
+export const getReviewList = review => dispatch => {
   axiosWithAuth()
-    .get("")
+    .get("https://bw-med-cabinet-three.herokuapp.com/saved")
     .then(({ data }) => {
-      dispatch(displayReviewList(data));
+      dispatch(displayReviewList(review));
     })
     .catch(err => console.log(err));
 };
