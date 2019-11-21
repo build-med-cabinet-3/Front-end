@@ -10,8 +10,6 @@ import * as serviceWorker from "./serviceWorker";
 
 const store = createStore(combinedReducer, applyMiddleware(thunk));
 
-console.log(store);
-console.log(Provider);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
