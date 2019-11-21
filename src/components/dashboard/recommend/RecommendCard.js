@@ -1,8 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+
 import * as actionCreators from "../../../actions/actionCreators";
 
 const RecommendCard = ({ recommended, saveRecommended }) => {
+  const token = localStorage.getItem("token");
+  const decoded = jwt_decode(token);
+
+  const userRecommended = Object.assign(recommended, decoded);
+  console.log(userRecommended);
   const onSave = e => {
     saveRecommended(recommended.strain_id);
   };
@@ -18,7 +25,7 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
       <p>{recommended.flavor}</p>
       <p>{recommended.medical_effect_plain}</p>
       <p>{recommended.strain}</p>
-      <button onclick="onSave()">Save Recommendation</button>
+      <button onClick={onSave()}>Save Recommendation</button>
     </div>
   );
 };
