@@ -9,7 +9,6 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
   const decoded = jwt_decode(token);
 
   const userRecommended = Object.assign(recommended, decoded);
-  console.log(userRecommended);
 
   return (
     <div className="recommended-card-container">
