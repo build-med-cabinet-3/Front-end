@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../actions/actionCreators";
 
 const ReviewCard = ({ review, startEditReview, deleteReview }) => {
-  console.log("this is from reviewCard", review);
   const onEdit = e => {
     e.preventDefault();
     startEditReview(review.id);

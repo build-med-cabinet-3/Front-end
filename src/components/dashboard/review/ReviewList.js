@@ -11,7 +11,6 @@ export const ReviewList = ({
   reviewToEdit,
   setValues
 }) => {
-  console.log(reviewList);
   useEffect(() => {
     getReviewList();
   }, [getReviewList]);
