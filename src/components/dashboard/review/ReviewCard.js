@@ -15,16 +15,17 @@ const ReviewCard = ({ review, startEditReview, deleteReview }) => {
   return (
     <>
       <div className="card-container">
-        <p>{review.CBD}</p>
-        <p>{review.Description1}</p>
-        <p>{review.Recommendation}</p>
+        <p>{review.strain}</p>
         <p>{review.Score}</p>
-        <p>{review.THC_Percent}</p>
         <p>{review.Type}</p>
+        <p>{review.THC_Percent}</p>
+        <p>{review.CBD}</p>
         <p>{review.effect}</p>
         <p>{review.flavor}</p>
+        <p>{review.Description1}</p>
         <p>{review.medical_effect_plain}</p>
-        <p>{review.strain}</p>
+        <p>{review.Recommendation}</p>
+
         <button onClick={onEdit}>Edit</button>
         <button onClick={onDelete}>Delete</button>
       </div>
