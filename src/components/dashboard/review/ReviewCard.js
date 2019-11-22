@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../actions/actionCreators";
 
-const ReviewCard = ({ review, startEdit, deleteReview }) => {
+const ReviewCard = ({ review, startEditReview, deleteReview }) => {
   console.log("this is from reviewCard", review);
   const onEdit = e => {
     e.preventDefault();
-    startEdit(review.id);
+    startEditReview(review.id);
   };
   const onDelete = e => {
     e.preventDefault();
@@ -15,7 +15,6 @@ const ReviewCard = ({ review, startEdit, deleteReview }) => {
 
   return (
     <>
-      <h1>Its Working!!!</h1>
       <div className="card-container">
         <p>{review.CBD}</p>
         <p>{review.Description1}</p>

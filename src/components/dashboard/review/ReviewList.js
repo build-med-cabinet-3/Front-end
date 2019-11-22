@@ -1,15 +1,24 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import * as actionCreators from "../../../actions/actionCreators";
+import { getReviewList } from "../../../actions/actionCreators";
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
-export const ReviewList = ({ getReviewList, reviewList }) => {
+export const ReviewList = ({
+  getReviewList,
+  reviewList,
+  editingPlantId,
+  reviewToEdit,
+  setValues
+}) => {
   console.log(reviewList);
+  useEffect(() => {
+    getReviewList();
+  }, [getReviewList]);
+
   return (
     <div className="review-list-container">
       <ReviewForm />
-      <ReviewCard />
       {reviewList.map(review => (
         <ReviewCard key={review.id} review={review} />
       ))}
@@ -18,4 +27,4 @@ export const ReviewList = ({ getReviewList, reviewList }) => {
 };
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, actionCreators)(ReviewList);
+export default connect(mapStateToProps, { getReviewList })(ReviewList);

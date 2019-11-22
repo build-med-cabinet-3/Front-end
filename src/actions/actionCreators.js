@@ -77,11 +77,11 @@ export const saveRecommended = recommended => dispatch => {
 export const displayReviewList = review => {
   return { type: types.GET_REVIEW, payload: review };
 };
-export const getReviewList = review => dispatch => {
+export const getReviewList = () => dispatch => {
   axiosWithAuth()
     .get("https://bw-med-cabinet-three.herokuapp.com/saved")
     .then(({ data }) => {
-      dispatch(displayReviewList(review));
+      dispatch(displayReviewList(data));
     })
     .catch(err => console.log(err));
 };
@@ -94,7 +94,10 @@ export const startEditReview = reviewId => {
 
 export const editReview = review => dispatch => {
   axiosWithAuth()
-    .put(`/${review.id}`, review)
+    .put(
+      `https://bw-med-cabinet-three.herokuapp.com/saved/${review.id}`,
+      review
+    )
     .then(({ data }) => {
       dispatch({ type: types.EDIT_REVIEW, payload: review });
       // stops editing and allows adding review again
@@ -110,8 +113,9 @@ export const startDeleteReview = review => {
 };
 
 export const deleteReview = id => dispatch => {
+  console.log("this is from action creaotrs for the id", id);
   axiosWithAuth()
-    .delete(`/${id}`)
+    .delete(`https://bw-med-cabinet-three.herokuapp.com/saved/${id}`)
     .then(() => {
       dispatch(startDeleteReview(id));
     })
