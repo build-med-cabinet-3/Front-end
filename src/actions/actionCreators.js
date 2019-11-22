@@ -62,7 +62,6 @@ export const setReviewList = recommended => {
 };
 
 export const saveRecommended = recommended => dispatch => {
-  console.log("this is from action creators", recommended);
   axiosWithAuth()
     .post("https://bw-med-cabinet-three.herokuapp.com/saved", recommended)
     .then(({ data }) => {
@@ -113,7 +112,6 @@ export const startDeleteReview = review => {
 };
 
 export const deleteReview = id => dispatch => {
-  console.log("this is from action creaotrs for the id", id);
   axiosWithAuth()
     .delete(`https://bw-med-cabinet-three.herokuapp.com/saved/${id}`)
     .then(() => {
