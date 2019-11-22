@@ -144,37 +144,40 @@ const ReviewForm = ({
 const FormikReviewForm = withFormik({
   mapPropsToValues({
     strain,
-    family,
-    potency,
-    feelings,
-    helpsWith,
-    negatives,
-    thcContent,
-    cbdContent,
-    description
+    Score,
+    Type,
+    THC_Percent,
+    CBD,
+    effect,
+    flavor,
+    Description1,
+    medical_effect_plain,
+    Recommendation
   }) {
     return {
       strain: strain || "",
-      family: family || "",
-      potency: potency || "",
-      feelings: feelings || "",
-      helpsWith: helpsWith || "",
-      negatives: negatives || "",
-      thcContent: thcContent || "",
-      cbdContent: cbdContent || "",
-      description: description || ""
+      Score: Score || "",
+      Type: Type || "",
+      THC_Percent: THC_Percent || "",
+      CBD: CBD || "",
+      effect: effect || "",
+      flavor: flavor || "",
+      Description1: Description1 || "",
+      medical_effect_plain: medical_effect_plain || "",
+      Description1: Description1 || ""
     };
   },
   validationSchema: Yup.object().shape({
     strain: Yup.string(),
-    family: Yup.string(),
-    potency: Yup.string(),
-    feelings: Yup.string(),
-    helpsWith: Yup.string(),
-    negatives: Yup.string(),
-    thcContent: Yup.string(),
-    cbdContent: Yup.string(),
-    description: Yup.string()
+    Score: Yup.string(),
+    Type: Yup.string(),
+    THC_Percent: Yup.string(),
+    CBD: Yup.string(),
+    effect: Yup.string(),
+    flavor: Yup.string(),
+    Description1: Yup.string(),
+    medical_effect_plain: Yup.string(),
+    Recommendation: Yup.string()
   })
 })(ReviewForm);
 
