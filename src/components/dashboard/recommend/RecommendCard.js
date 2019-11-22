@@ -21,7 +21,6 @@ const RecommendCard = ({ recommended, saveRecommended }) => {
       <p>{recommended.flavor}</p>
       <p>{recommended.Description1}</p>
       <p>{recommended.medical_effect_plain}</p>
-      <p>{review.Recommendation}</p>
       <button onClick={() => saveRecommended(recommended)}>
         Save Recommendation
       </button>
