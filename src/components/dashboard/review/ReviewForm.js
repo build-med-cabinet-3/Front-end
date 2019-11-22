@@ -49,7 +49,7 @@ const ReviewForm = ({
         <Field
           className="review-field"
           type="text"
-          name="type"
+          name="Type"
           placeholder="Type"
         />
         {touched.type && errors.type && (
@@ -59,7 +59,7 @@ const ReviewForm = ({
         <Field
           className="review-field"
           type="text"
-          name="score"
+          name="Score"
           placeholder="Score"
         />
         {touched.score && errors.score && (
