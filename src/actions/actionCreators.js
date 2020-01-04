@@ -17,7 +17,6 @@ export const userSignup = (userData, history) => dispatch => {
 };
 //!! User Signup
 
-// User Login && Logout
 export const userLogin = (loginData, history) => dispatch => {
   axiosWithAuth()
     .post(loginApi, loginData)
@@ -33,10 +32,9 @@ export const logout = () => {
   localStorage.removeItem("token");
   return { type: types.LOGOUT };
 };
-// User Logout
+//!! User Login && Logout
 
-//posting form for recommendations
-
+//posting form for recommendation back end
 export const postRecForm = recData => dispatch => {
   const stringObjRecData = JSON.stringify(recData);
   axiosWithAuth()
@@ -44,29 +42,21 @@ export const postRecForm = recData => dispatch => {
       `https://cors-anywhere.herokuapp.com/https://medcab3.herokuapp.com/request/?search=${stringObjRecData}`,
       { body: stringObjRecData }
     )
+    //get  && display recommendations from DS API for recommendations page
     .then(({ data }) => {
-      dispatch(displayRecList(data));
+      dispatch({ type: types.GET_RECOMMENDED, payload: data });
     })
     .catch(err => console.log(err));
 };
 //!! posting form for recommendations
 
-//get  && display recommendations from DS API for recommendations page
-export const displayRecList = recommended => {
-  return { type: types.GET_RECOMMENDED, payload: recommended };
-};
-
 //post recommendation to backend and display in the ReviewList Component
-export const setReviewList = recommended => {
-  return { type: types.SAVE_RECOMMENDED, payload: recommended };
-};
-
 export const saveRecommended = recommended => dispatch => {
   axiosWithAuth()
     .post("https://bw-med-cabinet-three.herokuapp.com/saved", recommended)
     .then(({ data }) => {
       // NEED AT LEAST ID OF NEW REVIEW FROM BACKEND
-      dispatch(setReviewList(recommended));
+      dispatch({ type: types.SAVE_RECOMMENDED, payload: recommended });
     })
     .catch(err => console.log(err));
 };
@@ -107,15 +97,12 @@ export const editReview = review => dispatch => {
 //!! edit recommended strain for personal review
 
 //Delete Review
-export const startDeleteReview = review => {
-  return { type: types.DELETE_REVIEW, payload: review };
-};
 
 export const deleteReview = id => dispatch => {
   axiosWithAuth()
     .delete(`https://bw-med-cabinet-three.herokuapp.com/saved/${id}`)
     .then(() => {
-      dispatch(startDeleteReview(id));
+      dispatch({ type: types.DELETE_REVIEW, payload: id });
     })
     .catch(err => console.log(err));
 };

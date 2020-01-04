@@ -163,8 +163,7 @@ const FormikReviewForm = withFormik({
       effect: effect || "",
       flavor: flavor || "",
       Description1: Description1 || "",
-      medical_effect_plain: medical_effect_plain || "",
-      Description1: Description1 || ""
+      medical_effect_plain: medical_effect_plain || ""
     };
   },
   validationSchema: Yup.object().shape({
