@@ -5,10 +5,10 @@ import jwt_decode from "jwt-decode";
 import * as actionCreators from "../../../actions/actionCreators";
 
 const RecommendCard = ({ recommended, saveRecommended }) => {
-  // const token = localStorage.getItem("token");
-  // const decoded = jwt_decode(token);
+  const token = localStorage.getItem("token");
+  const decoded = jwt_decode(token);
 
-  // const userRecommended = Object.assign(recommended, decoded);
+  const userRecommended = Object.assign(recommended, decoded);
 
   return (
     <div className="recommended-card-container">
